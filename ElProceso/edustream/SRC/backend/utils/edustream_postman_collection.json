@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "edustream-collection-001",
+		"name": "EduStream Pro - API",
+		"description": "Colección para probar la API EduStream Pro (cursos, lecciones, usuarios)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Cursos",
+			"item": [
+				{
+					"name": "Listar Cursos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/courses", "host": ["{{baseUrl}}"], "path": ["courses"]},
+						"description": "Obtener todos los cursos"
+					}
+				},
+				{
+					"name": "Crear Curso",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"title\": \"Curso de Python\",\n  \"description\": \"Aprende Python desde cero\",\n  \"category\": \"programacion\"\n}"},
+						"url": {"raw": "{{baseUrl}}/courses", "host": ["{{baseUrl}}"], "path": ["courses"]},
+						"description": "Crear un nuevo curso (admin)"
+					}
+				},
+				{
+					"name": "Obtener Curso por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/courses/{{courseId}}", "host": ["{{baseUrl}}"], "path": ["courses", "{{courseId}}"]},
+						"description": "Obtener curso específico por ID"
+					}
+				},
+				{
+					"name": "Actualizar Curso",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"title\": \"Curso de Python Avanzado\"\n}"},
+						"url": {"raw": "{{baseUrl}}/courses/{{courseId}}", "host": ["{{baseUrl}}"], "path": ["courses", "{{courseId}}"]},
+						"description": "Actualizar curso existente (admin)"
+					}
+				},
+				{
+					"name": "Eliminar Curso",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/courses/{{courseId}}", "host": ["{{baseUrl}}"], "path": ["courses", "{{courseId}}"]},
+						"description": "Eliminar curso (admin)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Lecciones",
+			"item": [
+				{
+					"name": "Listar Lecciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/lessons", "host": ["{{baseUrl}}"], "path": ["lessons"]},
+						"description": "Obtener todas las lecciones"
+					}
+				},
+				{
+					"name": "Crear Lección",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"course_id\": \"{{courseId}}\",\n  \"title\": \"Introducción\",\n  \"content\": \"Bienvenido al curso\",\n  \"order\": 1\n}"},
+						"url": {"raw": "{{baseUrl}}/lessons", "host": ["{{baseUrl}}"], "path": ["lessons"]},
+						"description": "Crear una nueva lección (admin)"
+					}
+				},
+				{
+					"name": "Obtener Lección por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/lessons/{{lessonId}}", "host": ["{{baseUrl}}"], "path": ["lessons", "{{lessonId}}"]},
+						"description": "Obtener lección específica por ID"
+					}
+				},
+				{
+					"name": "Actualizar Lección",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"title\": \"Lección Actualizada\"\n}"},
+						"url": {"raw": "{{baseUrl}}/lessons/{{lessonId}}", "host": ["{{baseUrl}}"], "path": ["lessons", "{{lessonId}}"]},
+						"description": "Actualizar lección existente (admin)"
+					}
+				},
+				{
+					"name": "Eliminar Lección",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/lessons/{{lessonId}}", "host": ["{{baseUrl}}"], "path": ["lessons", "{{lessonId}}"]},
+						"description": "Eliminar lección (admin)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"]},
+						"description": "Obtener todos los usuarios"
+					}
+				},
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"username\": \"admin\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"admin\"\n}"},
+						"url": {"raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"]},
+						"description": "Crear un nuevo usuario (admin)"
+					}
+				},
+				{
+					"name": "Obtener Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/users/{{userId}}", "host": ["{{baseUrl}}"], "path": ["users", "{{userId}}"]},
+						"description": "Obtener usuario específico por ID"
+					}
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"email\": \"nuevo@email.com\"\n}"},
+						"url": {"raw": "{{baseUrl}}/users/{{userId}}", "host": ["{{baseUrl}}"], "path": ["users", "{{userId}}"]},
+						"description": "Actualizar usuario existente (admin)"
+					}
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {"raw": "{{baseUrl}}/users/{{userId}}", "host": ["{{baseUrl}}"], "path": ["users", "{{userId}}"]},
+						"description": "Eliminar usuario (admin)"
+					}
+				}
+			]
+		}
+	]
+}

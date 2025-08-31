@@ -1,0 +1,24 @@
+FROM python:3.11-slim-bullseye
+
+# Actualizar paquetes del sistema para corregir vulnerabilidades
+RUN apt-get update && apt-get upgrade -y && apt-get clean
+
+# Establecer el directorio de trabajo
+WORKDIR /app
+
+# Copiar requirements.txt desde la ruta relativa al contexto edustream
+COPY SRC/backend/requirements.txt /app/requirements.txt
+# Copiar el resto de los archivos del proyecto
+COPY . /app
+
+# Instalar dependencias
+RUN pip install --no-cache-dir --upgrade pip \
+	&& pip install --no-cache-dir -r requirements.txt
+
+# Exponer el puerto de FastAPI
+EXPOSE 8000
+
+# Comando para ejecutar la app
+CMD ["uvicorn", "SRC.backend.routes.index:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# docker run -p 8000:8000 edustream-backend
