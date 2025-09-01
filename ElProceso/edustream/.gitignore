@@ -1,2 +1,27 @@
+# Environment variables
 .env
-edustream/SRC/backend/.env
+**/.env
+**/env/
+
+# Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+dist/
+build/
+*.egg
+*.egg-info/
+
+# VS Code
+.vscode/
+.vscode-server/
+
+# System files
+.DS_Store
+Thumbs.dbgit add .gitignore
+git commit -m "Actualizando .gitignore y removiendo .env del seguimiento"
+git push origin frontend
