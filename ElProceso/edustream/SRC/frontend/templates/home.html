@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center">
+    <!-- Círculo decorativo -->
+    <div class="absolute bottom-20 right-20 w-64 h-64">
+        <div class="relative w-full h-full">
+            <div class="absolute inset-0 border border-white/10 rounded-full pulse-circle"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <p class="text-sm tracking-wider opacity-60">EXPLORA • APRENDE • CRECE</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container mx-auto px-4 py-20">
+        <!-- Badge -->
+        <div class="inline-block px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8">
+            <span class="text-sm opacity-60">La mejor plataforma de educación online</span>
+        </div>
+
+        <!-- Título principal -->
+        <h1 class="text-6xl font-bold mb-6 max-w-3xl">
+            Aprende con los 
+            <span class="font-instrument text-accent-blue">mejores cursos</span> 
+            online
+        </h1>
+
+        <!-- Descripción -->
+        <p class="text-xl opacity-60 mb-12 max-w-2xl">
+            Descubre una nueva forma de aprender con nuestra plataforma de streaming educativo.
+            Accede a cientos de cursos de alta calidad.
+        </p>
+
+        <!-- Botones CTA -->
+        <div class="flex flex-wrap gap-4">
+            <a href="/register" class="px-8 py-4 rounded-full bg-accent-blue hover:bg-opacity-90 transition-all text-lg font-semibold">
+                Comienza Ahora
+            </a>
+            <a href="/courses" class="px-8 py-4 rounded-full border border-white/20 hover:border-accent-blue transition-all text-lg font-semibold">
+                Ver Cursos
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Cursos Destacados -->
+<section class="py-20 bg-white/5">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-12">Cursos Destacados</h2>
+        
+        <!-- Grid de cursos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card de Curso -->
+            {% for i in range(3) %}
+            <div class="card-hover rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10">
+                <div class="aspect-video bg-black/50"></div>
+                <div class="p-6">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-accent-blue/10 text-accent-blue">
+                        Categoría
+                    </span>
+                    <h3 class="text-xl font-semibold mt-4">Título del Curso</h3>
+                    <p class="opacity-60 mt-2">Descripción corta del curso que introduce el tema principal.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Estadísticas -->
+<section class="py-20">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <span class="text-4xl font-bold text-accent-blue">1000+</span>
+                <p class="mt-2 opacity-60">Estudiantes Activos</p>
+            </div>
+            <div class="text-center">
+                <span class="text-4xl font-bold text-accent-blue">500+</span>
+                <p class="mt-2 opacity-60">Cursos Disponibles</p>
+            </div>
+            <div class="text-center">
+                <span class="text-4xl font-bold text-accent-blue">50+</span>
+                <p class="mt-2 opacity-60">Instructores Expertos</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

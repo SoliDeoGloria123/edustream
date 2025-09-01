@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 relative">
+        <!-- Círculo decorativo -->
+        <div class="absolute -top-20 -right-20 w-40 h-40">
+            <div class="relative w-full h-full">
+                <div class="absolute inset-0 border border-white/10 rounded-full pulse-circle"></div>
+            </div>
+        </div>
+
+        <!-- Contenedor del formulario con efecto de vidrio -->
+        <div class="relative backdrop-blur-xl bg-white/5 p-8 rounded-2xl border border-white/10">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">
+                    Bienvenido a EduStream
+                </h2>
+                <p class="mt-2 text-sm opacity-60">
+                    Crea una Cuenta para poder disfrutar del mejor contenido educativo
+                </p>
+            </div>
+
+            <form id="registerForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium">Nombre de Usuario</label>
+                    <input type="text" id="username" name="username" required
+                        class="mt-1 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium">Email</label>
+                    <input type="email" id="email" name="email" required
+                        class="mt-1 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium">Contraseña</label>
+                    <input type="password" id="password" name="password" required
+                        class="mt-1 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all">
+                </div>
+
+                <div>
+                    <label for="confirm_password" class="block text-sm font-medium">Confirmar Contraseña</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required
+                        class="mt-1 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all">
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-sm hover:text-accent-blue transition-colors">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-3 px-4 rounded-xl bg-accent-blue hover:bg-opacity-90 transition-all font-semibold">
+                    Registrarse
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm opacity-60">
+                    ¿Tienes una cuenta?
+                    <a href="/login" class="text-accent-blue hover:underline">
+                        Inicia sesión aquí
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

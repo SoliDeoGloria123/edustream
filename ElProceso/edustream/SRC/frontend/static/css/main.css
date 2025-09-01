@@ -1,0 +1,54 @@
+/* Efecto de papel animado para el fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, #000000 25%, transparent 25%) -50px 0,
+        linear-gradient(-45deg, #000000 25%, transparent 25%) -50px 0,
+        linear-gradient(45deg, transparent 75%, #000000 75%) -50px 0,
+        linear-gradient(-45deg, transparent 75%, #000000 75%) -50px 0;
+    background-size: 100px 100px;
+    opacity: 0.03;
+    pointer-events: none;
+    animation: paperPattern 15s linear infinite;
+    z-index: -1;
+}
+
+@keyframes paperPattern {
+    0% {
+        background-position: -50px 0, -50px 0, -50px 0, -50px 0;
+    }
+    100% {
+        background-position: 50px 100px, 50px 100px, 50px 100px, 50px 100px;
+    }
+}
+
+/* Efecto de pulsación para círculos decorativos */
+.pulse-circle {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: .7;
+        transform: scale(1.05);
+    }
+}
+
+/* Efecto de hover suave para cards */
+.card-hover {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(27, 98, 252, 0.2);
+}
