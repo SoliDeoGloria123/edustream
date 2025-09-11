@@ -3,10 +3,24 @@ import os
 import json
 import pymongo # type: ignore
 from dotenv import load_dotenv
-from SRC.backend.models.course import Course
-from SRC.backend.models.lesson import Lesson
-from SRC.backend.models.user import User
+from models.course import Course
+from models.lesson import Lesson
+from models.user import User
 from typing import Any, Dict, List
+from fastapi import FastAPI
+from middleware.CORS import CORS
+from routes.user_routes import router as user_router
+from routes.lesson_routes import router as lesson_router
+from routes.course_routes import router as course_router
+from fastapi import APIRouter
+
+
+app = FastAPI()
+app.include_router(course_router, prefix="/courses")
+app.include_router(lesson_router, prefix="/lessons")
+app.include_router(user_router)
+CORS(app)
+
 # Define courses, lessons, users as empty lists or import from a data file if needed
 courses = []
 lessons = []
@@ -14,7 +28,6 @@ users = []
 
 # Cargar .env correctamente
 load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
-
 
 MONGO_URI = os.getenv("MONGO_URI")
 
@@ -58,6 +71,7 @@ def main_db() -> str:
         insert_initial_data(get_db(instance_db()), courses, lessons, users)
     ]
     return json.dumps(result, ensure_ascii=False, indent=2)
+
 
 # Inicialización de la base de datos
 if __name__ == "__main__":

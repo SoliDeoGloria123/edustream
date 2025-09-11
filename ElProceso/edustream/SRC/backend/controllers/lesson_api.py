@@ -2,9 +2,9 @@
 API para el modelo Lesson con FastAPI y MongoDB Atlas.
 """
 from fastapi import APIRouter, HTTPException, status
-from SRC.backend.models.lesson import Lesson
+from models.lesson import Lesson
 from typing import List
-from SRC.backend.main import get_db, instance_db
+from db import get_db, instance_db
 
 router = APIRouter(prefix="/lessons", tags=["lessons"])
 

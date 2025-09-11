@@ -2,9 +2,9 @@
 API para el modelo User con FastAPI y MongoDB Atlas, funcional y tipado.
 """
 from fastapi import APIRouter, HTTPException, status
-from SRC.backend.models.user import User
+from models.user import User
 from typing import List
-from SRC.backend.main import get_db, instance_db
+from db import get_db, instance_db
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -21,6 +21,7 @@ def get_users():
 def create_user(user: User):
     db = get_db(instance_db())
     user_dict = user.dict(by_alias=True)
+    user_dict.pop('_id', None)  # Elimina _id si existe
     result = db["user"].insert_one(user_dict)
     user_dict["_id"] = str(result.inserted_id)
     return User(**user_dict)

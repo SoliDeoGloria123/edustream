@@ -3,9 +3,9 @@ Rutas para el modelo Lesson con control de acceso por rol.
 GET es público, POST/PUT/DELETE solo admin.
 """
 from fastapi import APIRouter, Depends, status, HTTPException  # noqa: F401
-from SRC.backend.models.lesson import Lesson
-from SRC.backend.controllers.lesson_api import get_lessons, create_lesson, get_lesson, update_lesson, delete_lesson
-from SRC.backend.middleware.auth import JWTBearer
+from models.lesson import Lesson
+from controllers.lesson_api import get_lessons, create_lesson, get_lesson, update_lesson, delete_lesson
+from middleware.auth import JWTBearer
 from typing import List
 
 router = APIRouter(prefix="/lessons", tags=["lessons"])

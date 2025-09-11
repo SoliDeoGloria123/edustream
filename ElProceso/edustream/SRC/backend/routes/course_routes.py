@@ -3,9 +3,9 @@ Rutas para el modelo Course con control de acceso por rol.
 GET es público, POST/PUT/DELETE solo admin.
 """
 from fastapi import APIRouter, Depends, status
-from SRC.backend.models.course import Course
-from SRC.backend.controllers.course_api import get_courses, create_course, get_course, update_course, delete_course
-from SRC.backend.middleware.auth import JWTBearer
+from models.course import Course
+from controllers.course_api import get_courses, create_course, get_course, update_course, delete_course
+from middleware.auth import JWTBearer
 from typing import List
 
 router = APIRouter(prefix="/courses", tags=["courses"])

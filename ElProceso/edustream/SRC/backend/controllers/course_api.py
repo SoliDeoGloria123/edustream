@@ -2,9 +2,9 @@
 API para el modelo Course con FastAPI y MongoDB Atlas.
 """
 from fastapi import APIRouter, HTTPException, status
-from SRC.backend.models.course import Course
+from models.course import Course
 from typing import List
-from SRC.backend.main import get_db, instance_db
+from db import get_db, instance_db
 import pymongo  # type: ignore  # noqa: F401
 import os  # noqa: F401
 
