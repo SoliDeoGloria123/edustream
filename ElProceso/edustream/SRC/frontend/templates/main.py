@@ -6,6 +6,7 @@ import uvicorn
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="../static"), name="static")
 templates = Jinja2Templates(directory="public")
+temp = Jinja2Templates(directory="private")
 
 @app.get("/")
 async def home(request: Request):
@@ -18,6 +19,11 @@ async def registro(request: Request):
 @app.get("/login")
 async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/dashboard")
+async def dashboard_admin(request: Request):
+    return temp.TemplateResponse("admin/dashboard.admin.html", {"request": request, "panel": request.query_params.get("panel", "inicio")})
+
 
 if __name__ == "__main__":
     print("🚀 Iniciando servidor en http://localhost:8001")
