@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Registro - EduStream{% endblock %}
+{% block content %}
+<div class="container mt-5 registro">
+    <h1 class="mb-4 title-registro">Iniciar sesión</h1>
+    <p class="welcome-message">Bienvenido de nuevo! Por favor, ingresa tus credenciales para acceder a tu cuenta.</p>
+    <div>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-container login">
+        <form method="get" action="/login" class="login-form">
+            <div class="mb-3 email">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" name="email"
+                    placeholder="Ingresa tu correo electrónico" required>
+            </div>
+            <div class="mb-3 password">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password"
+                    placeholder="Ingresa tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            <p class="mt-3">¿No tienes una cuenta? <a href="/registro">Regístrate <span
+                        class="text-primary">aquí</span></a>.</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

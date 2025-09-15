@@ -3,13 +3,154 @@
 {% block title %}Home - EduStream{% endblock %}
 
 {% block content %}
-<div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Jumbotron personalizado</h1>
-        <p class="col-md-8 fs-4">Usando una serie de utilidades, puede crear este jumbotron, como el de versiones
-            anteriores de Bootstrap. Echa un vistazo a los ejemplos a continuación para saber cómo puedes remezclarlo y
-            cambiarle el estilo a tu gusto.</p>
-        <button class="btn btn-primary btn-lg" type="button">Botón de ejemplo</button>
+<div class="container-home">
+    <!--Inicio Header-->
+    <div class="container mt-5 presentation">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Bienvenido a Edu<span class="serif">Stream</span></h1>
+            <p class="lead">Tu plataforma de streaming educativa favorita.</p>
+        </div>
+        <div class="input-group-container">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recipient’s username"
+                    aria-label="Recipient’s username" aria-describedby="button-addon2">
+                <button class="btn btn-primary" type="button" id="button-addon2">Comenzar</button>
+            </div>
+        </div>
+    </div>
+    <!--Fin Header-->
+    <div class="courses-container">
+        <!--Card 1-->
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+                alt="Curso de Python">
+            <div class="card-body">
+                <h3>Curso de Python</h3>
+                <p class="card-text">Aprende los fundamentos de Python desde cero.</p>
+                <button class="btn btn-primary">Ver más</button>
+            </div>
+        </div>
+        <!--Card 2-->
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80"
+                alt="Desarrollo Web">
+            <div class="card-body">
+                <h3>Desarrollo Web</h3>
+                <p class="card-text">Aprende los fundamentos de desarrollo web desde cero.</p>
+                <button class="btn btn-primary">Ver más</button>
+            </div>
+        </div>
+        <!--Card 3-->
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+                alt="Data Science">
+            <div class="card-body">
+                <h3>Data Science</h3>
+                <p class="card-text">Aprende los fundamentos de Data Science desde cero.</p>
+                <button class="btn btn-primary">Ver más</button>
+            </div>
+        </div>
+        <!--Card 4-->
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+                alt="Machine Learning">
+            <div class="card-body">
+                <h3>Machine Learning</h3>
+                <p class="card-text">Aprende los fundamentos de Machine Learning desde cero.</p>
+                <button class="btn btn-primary">Ver más</button>
+            </div>
+        </div>
+    </div>
+    <div class="title-course">
+        <div class="container mt-5">
+            <h2>Cursos Destacados</h2>
+        </div>
+        <p class="subtitle">Explora cursos, tutoriales y mucho más.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button" style="top: 50%;">Explorar Cursos</a>
+    </div>
+    <!--Ventajas-->
+    <div class="container mt-5 text-center advantages">
+        <ul class="list-unstyled">
+            <h2 class="mb-4">Ventajas</h2>
+            <div>
+                <li class="list-item left">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80"
+                        alt="Ventajas" class="advantages-image mb-4">
+                    <div class="advantages-description">
+                        <p>Disfruta de una amplia variedad de cursos y materiales educativos diseñados por expertos en
+                            la materia.</p>
+                    </div>
+                    Acceso a contenido exclusivo.
+                </li>
+            </div>
+            <div>
+                <li class="list-item right">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80"
+                        alt="Ventajas" class="advantages-image mb-4">
+                    <div class="advantages-description">
+                        <p>Disfruta de la flexibilidad de aprender cuando y donde quieras, adaptando el ritmo a tus
+                            necesidades.</p>
+                    </div>
+                    Aprendizaje a tu propio ritmo.
+                </li>
+            </div>
+            <div>
+                <li class="list-item left">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80"
+                        alt="Ventajas" class="advantages-image mb-4">
+                    <div class="advantages-description">
+                        <p>Obtén certificados reconocidos que validan tus habilidades y conocimientos adquiridos en
+                            nuestros cursos.</p>
+                    </div>
+                    Certificados al completar cursos.
+                </li>
+            </div>
+        </ul>
+        <p class="mt-4">¡Únete a nosotros y comienza tu viaje de aprendizaje hoy mismo!</p>
+        <a class="btn btn-primary" href="#" role="button">Regístrate Ahora</a>
+    </div>
+    <!--Fin Ventajas-->
+    <!--Testimonios-->
+    <div class="container mt-5 text-center testimonials-section">
+        <h2 class="mb-4">Testimonios</h2>
+        <div class="testimonials-container">
+            <div class="testimonial">
+                <p>"EduStream ha transformado mi forma de aprender. Los cursos son excelentes y el contenido es muy
+                    relevante."</p>
+                <h5>- Juan Pérez</h5>
+            </div>
+            <div class="testimonial">
+                <p>"La flexibilidad de aprender a mi propio ritmo es lo que más me gusta de EduStream. ¡Lo recomiendo!"
+                </p>
+                <h5>- María Gómez</h5>
+            </div>
+            <div class="testimonial">
+                <p>"Los certificados que obtuve al completar los cursos me ayudaron a avanzar en mi carrera
+                    profesional."</p>
+                <h5>- Carlos Rodríguez</h5>
+            </div>
+        </div>
+    </div>
+    <!--Fin Testimonios-->
+    <div class="container mt-5 text-center why-choose-us">
+        <h2 class="mb-4">¿Por qué elegir EduStream?</h2>
+        <p>EduStream es la plataforma de streaming educativa que se adapta a tus necesidades. Con una amplia variedad de
+            cursos y contenido exclusivo, te ofrecemos las herramientas necesarias para alcanzar tus objetivos de
+            aprendizaje.</p>
+    </div>
+    <div class="container mt-5 text-center contact-section">
+        <h2 class="mb-4">Contáctanos</h2>
+        <p>¿Tienes preguntas o necesitas ayuda? No dudes en contactarnos a través de nuestro formulario de contacto o
+            enviándonos un correo electrónico a <a href="mailto:info@edustream.com">info@edustream.com</a>.</p>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
     </div>
 </div>
+
 {% endblock %}
