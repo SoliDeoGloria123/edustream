@@ -9,7 +9,7 @@ class User(BaseModel):
     username: str
     email: str
     password: str  # Hasheada
-    role: str  # 'admin' o 'student'
+    role: str = 'student' 
     last_login: Optional[str] = None
     is_active: bool = True
     courses_enrolled: List[str] = []  # IDs de cursos

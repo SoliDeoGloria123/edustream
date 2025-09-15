@@ -16,6 +16,10 @@ async def home(request: Request):
 async def registro(request: Request):
     return templates.TemplateResponse("registro.html", {"request": request})
 
+@app.post("/registro")
+async def registro_post(request: Request):
+    return templates.TemplateResponse("registro.html", {"request": request})
+
 @app.get("/login")
 async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})

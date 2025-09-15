@@ -1,35 +1,31 @@
 
-import os
 import json
-import pymongo # type: ignore
-from dotenv import load_dotenv
-from SRC.backend.models.course import Course
-from SRC.backend.models.lesson import Lesson
-from SRC.backend.models.user import User
-from typing import Any, Dict, List
-# Define courses, lessons, users as empty lists or import from a data file if needed
+from fastapi import FastAPI, Request, Form
+from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
+from models.course import Course
+from models.lesson import Lesson
+from models.user import User
+from controllers import user_api as user_controller
+from typing import List, Dict, Any
+from config.db import get_db, instance_db
+
 courses = []
 lessons = []
 users = []
 
-# Cargar .env correctamente
-load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
-
-
-MONGO_URI = os.getenv("MONGO_URI")
-
-def instance_db() -> Any:
-    try:
-        return pymongo.MongoClient(MONGO_URI)
-    except Exception as e:
-        return {"success": False, "error": str(e)}
-
-def get_db(client: pymongo.MongoClient) -> dict:
-    if not client:
-        return {"success": False, "error": "Invalid MongoDB client"}
-    return client["EDUSTREAM"]
+templates = Jinja2Templates(directory="public")
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
     
-def create_collection(db: Any, name: str) -> Dict[str, Any]:
+def create_collection(db, name: str) -> Dict[str, Any]:
     try:
         if not db:
             return {"success": False, "error": "Invalid database"}
@@ -39,7 +35,7 @@ def create_collection(db: Any, name: str) -> Dict[str, Any]:
     except Exception as e:
         return {"success": False, "error": str(e)}
 
-def insert_initial_data(db: Any, courses: List[Dict], lessons: List[Dict], users: List[Dict]) -> Dict[str, Any]:
+def insert_initial_data(db, courses: List[Dict], lessons: List[Dict], users: List[Dict]) -> Dict[str, Any]:
     try:
         if isinstance(db, dict) and not db.get("success", True):
             return db
@@ -58,6 +54,17 @@ def main_db() -> str:
         insert_initial_data(get_db(instance_db()), courses, lessons, users)
     ]
     return json.dumps(result, ensure_ascii=False, indent=2)
+
+###########################################
+
+# Endpoint para registro de usuario
+@app.post("/registro")
+async def registro_post(request: Request, username: str = Form(...), email: str = Form(...), password: str = Form(...)):
+    user = User(username=username, email=email, password=password)
+    user_controller.create_user(user)
+    return RedirectResponse("http://localhost:8001/login", status_code=303)
+
+
 
 # Inicialización de la base de datos
 if __name__ == "__main__":
