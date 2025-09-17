@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Request
+## main.py del Frontend
+from fastapi import FastAPI, Request 
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 import uvicorn
@@ -24,9 +25,21 @@ async def registro_post(request: Request):
 async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
+@app.get("/dashboard-estudiante")
+async def dashboard_student(request: Request):
+    return temp.TemplateResponse("student/dashboard.student.html", {"request": request, "panel": request.query_params.get("panel", "inicio"), "user": {"username": "Student"}})
+
+@app.get("/dashboard-estudiante")
+async def dashboard_student_post(request: Request):
+    return temp.TemplateResponse("student/dashboard.student.html", {"request": request, "panel": request.query_params.get("panel", "inicio"), "user": {"username": "Student"}})
+
+@app.get("/logout")
+async def logout(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
 @app.get("/dashboard")
 async def dashboard_admin(request: Request):
-    return temp.TemplateResponse("admin/dashboard.admin.html", {"request": request, "panel": request.query_params.get("panel", "inicio")})
+    return temp.TemplateResponse("admin/dashboard.admin.html", {"request": request, "panel": request.query_params.get("panel", "inicio"), "user": {"username": "Admin"}})
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-
+## main.py del Backend
 import json
 from fastapi import FastAPI, Request, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -62,9 +62,18 @@ def main_db() -> str:
 async def registro_post(request: Request, username: str = Form(...), email: str = Form(...), password: str = Form(...)):
     user = User(username=username, email=email, password=password)
     user_controller.create_user(user)
-    return RedirectResponse("http://localhost:8001/login", status_code=303)
+    return RedirectResponse("/login", status_code=303)
 
-
+@app.post("/login")
+async def login_post(request: Request, username: str = Form(...), password: str = Form(...)):
+    user = user_controller.authenticate_user(username=username, password=password)
+    if user:
+        if user.role == "admin":
+            return RedirectResponse("http://localhost:8001/dashboard", status_code=303)
+        elif user.role == "student":
+            return RedirectResponse("http://localhost:8001/dashboard-estudiante", status_code=303)
+    else:
+        return RedirectResponse("http://localhost:8001/login?error=invalid", status_code=303)
 
 # Inicialización de la base de datos
 if __name__ == "__main__":

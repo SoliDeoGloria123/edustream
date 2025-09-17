@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./SRC/frontend
+      dockerfile: dockerfile.front
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./SRC/frontend:/app
+    restart: always
+
+  backend:
+    build:
+      context: ./SRC/backend
+      dockerfile: dockerfile.back
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./SRC/backend:/app
+    restart: always
+    env_file:
+      - ./SRC/backend/.env

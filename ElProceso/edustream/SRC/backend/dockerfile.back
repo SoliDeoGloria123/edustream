@@ -7,7 +7,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get clean
 WORKDIR /app
 
 # Copiar requirements.txt desde la ruta relativa al contexto edustream
-COPY SRC/backend/requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 # Copiar el resto de los archivos del proyecto
 COPY . /app
 
@@ -19,6 +19,6 @@ RUN pip install --no-cache-dir --upgrade pip \
 EXPOSE 8000
 
 # Comando para ejecutar la app
-CMD ["uvicorn", "SRC.backend.routes.index:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 # docker run -p 8000:8000 edustream-backend

@@ -56,3 +56,13 @@ def delete_user(user_id: str):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="User not found")
     return {"success": True, "message": f"User {user_id} deleted"}
+
+@router.post("/authenticate", response_model=User)
+def authenticate_user(username: str, password: str):
+    db = get_db(instance_db())
+    user = db["user"].find_one({"username": username, "password": password})
+    if not user:
+        return None
+    if "_id" in user:
+        user["_id"] = str(user["_id"])
+    return User(**user)

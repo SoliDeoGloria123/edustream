@@ -5,9 +5,9 @@ import os
 import pymongo
 from dotenv import load_dotenv
 from datetime import datetime
-from SRC.backend.models.user import User
-from SRC.backend.models.course import Course
-from SRC.backend.models.lesson import Lesson
+from backend.models.user import User
+from backend.models.course import Course
+from backend.models.lesson import Lesson
 
 # Cargar variables de entorno desde .env
 load_dotenv(os.path.join(os.path.dirname(__file__), '../.env'))
@@ -19,16 +19,16 @@ db = client["EDUSTREAM"]
 # Datos demo
 now = datetime.now().isoformat()
 users = [
-    User(username="admin", email="admin@example.com", password="123456", role="admin", created_at=now, updated_at=now).model_dump(by_alias=True),
-    User(username="student1", email="student1@example.com", password="123456", role="student", created_at=now, updated_at=now).model_dump(by_alias=True)
+    User(username="admin", email="admin@edu.com", password="123456", role="admin", created_at=now, updated_at=now).dict(by_alias=True),
+    User(username="student1", email="student1@example.com", password="123456", role="student", created_at=now, updated_at=now).dict(by_alias=True)
 ]
 courses = [
-    Course(title="Curso de Python", description="Aprende Python desde cero", category="programacion", created_at=now, updated_at=now).model_dump(by_alias=True),
-    Course(title="Curso de React", description="React para principiantes", category="frontend", created_at=now, updated_at=now).model_dump(by_alias=True)
+    Course(title="Curso de Python", description="Aprende Python desde cero", category="programacion", created_at=now, updated_at=now).dict(by_alias=True),
+    Course(title="Curso de React", description="React para principiantes", category="frontend", created_at=now, updated_at=now).dict(by_alias=True)
 ]
 lessons = [
-    Lesson(course_id="1", title="Introducción a Python", content="Bienvenido al curso", order=1, created_at=now, updated_at=now).model_dump(by_alias=True),
-    Lesson(course_id="2", title="Introducción a React", content="Bienvenido al curso", order=1, created_at=now, updated_at=now).model_dump(by_alias=True)
+    Lesson(course_id="1", title="Introducción a Python", content="Bienvenido al curso", order=1, created_at=now, updated_at=now).dict(by_alias=True),
+    Lesson(course_id="2", title="Introducción a React", content="Bienvenido al curso", order=1, created_at=now, updated_at=now).dict(by_alias=True)
 ]
 
 def remove_null_id(items):
